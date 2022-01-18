@@ -1,22 +1,30 @@
 import { ToDo } from "./toDo"
 import React, { useState } from 'react';
+import { List } from "../../types";
 
-export const ToDoList = ({toDoList}) => {
+type Props = {toDoList: List}
 
-    const [newTask, setNewTask] = useState('')
+export const ToDoList = ({toDoList}: Props) => {
+
+    const [newTask, setNewTask] = useState<string>('')
+
+    const onFillInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const task : string = e.target.value
+        setNewTask(task)
+    }
 
     return (
         <div>
             <ul>
                 {toDoList.map(todo => {
                     return (
-                        <ToDo todo={todo} />
+                        <ToDo key={todo.id} todo={todo} />
                     )
                 })}
             </ul>
 
             <form>
-                <input value={newTask} type="text" placeholder="Enter new task..."/>
+                <input value={newTask} onChange={(e) => {onFillInput(e)}} type="text" placeholder="Enter new task..."/>
                 <button>Submit</button>  
             </form>
         </div>
