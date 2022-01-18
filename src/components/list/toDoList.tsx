@@ -1,6 +1,6 @@
 import { ToDo } from "./toDo"
 import React, { useState } from 'react';
-import { List } from "../../types";
+import { List, Task } from "../../types";
 
 type Props = {toDoList: List}
 
@@ -11,6 +11,14 @@ export const ToDoList = ({toDoList}: Props) => {
     const onFillInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const task : string = e.target.value
         setNewTask(task)
+    }
+
+    const onSubmit = () => {
+        const task : Task = {
+            id: toDoList.length,
+            task: newTask
+        }
+        toDoList.push(task)
     }
 
     return (
@@ -25,7 +33,7 @@ export const ToDoList = ({toDoList}: Props) => {
 
             <form>
                 <input value={newTask} onChange={(e) => {onFillInput(e)}} type="text" placeholder="Enter new task..."/>
-                <button>Submit</button>  
+                <button onClick={()=>{onSubmit()}}>Submit</button>  
             </form>
         </div>
     )
