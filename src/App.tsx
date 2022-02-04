@@ -1,18 +1,18 @@
 import { ToDoList } from "./components/list/toDoList";
 import React, { useState } from 'react';
-import list from "./list.json";
-import { List } from "./types";
 
+import { List } from "./types";
+import { ListItem, ListTitle } from "./components/list/toDo.styles";
 
 function App() {
 
-  const [toDoList, setToDoList] = useState<List>(list); //toDoList es inmutable la funcion sirve a actualizarla
+  const [toDoList, setToDoList] = useState<List>([]); //toDoList es inmutable la funcion sirve a actualizarla
 
   return (
-    <div className="App">
-      <h1>To do List</h1>
+    <ListItem className="App">
+      <ListTitle>To do List</ListTitle>
       <ToDoList toDoList={toDoList} setToDoList={setToDoList} />
-    </div>
+    </ListItem>
   );
 }
 
