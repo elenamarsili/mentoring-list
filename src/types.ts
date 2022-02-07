@@ -1,3 +1,5 @@
+export type Lists = Array<List>
+
 export type List = Array<Task>
 
 export type Task = {
@@ -5,3 +7,7 @@ export type Task = {
                 task: string;
             }
 
+/* export type List = {
+                title: string;
+                tasks: Array<Task>;
+            } */
