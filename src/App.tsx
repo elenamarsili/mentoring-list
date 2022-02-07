@@ -6,15 +6,7 @@ import { AddListButton, ListItem, ListTitle } from "./components/list/toDo.style
 
 function App() {
   /* const [myLists, setMyLists] = useState<Lists>([]); */
-  const [toDoList, setToDoList] = useState<List>([]); //toDoList es inmutable la funcion sirve a actualizarla
-
-/*   const onAddList = () => {
-    const newToDoList: List = {
-            title: 'New List',
-            tasks: []
-        }
-    setMyLists(myLists.concat(newToDoList));
-} */
+  const [toDoList, setToDoList] = useState<List>([]); 
 
   return (
 /*     <div>

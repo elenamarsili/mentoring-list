@@ -1,6 +1,5 @@
 import { List, Task } from "../../types"
 import { ToDoItem, DeleteButton } from "./toDo.styles";
-import list from "../../list.json";
 
 type Props = {todo: Task; toDoList: List; setToDoList: React.Dispatch<React.SetStateAction<List>>}
 

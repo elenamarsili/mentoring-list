@@ -69,7 +69,7 @@ export const ToDoList = ({ toDoList, setToDoList }: Props) => {
                         })}
                     </div>
         
-                    <ToDoInput value={newTask} onChange={(e) => { onFillTaskInput(e) }} type="text" placeholder="Enter new task..." onKeyPress={(e) => { onTitleEnter(e) }}/>
+                    <ToDoInput value={newTask} onChange={(e) => { onFillTaskInput(e) }} type="text" placeholder="Enter new task..." onKeyPress={(e) => { onEnter(e) }}/>
                     <AddButton onClick={() => { onSubmit() }} disabled={ newTask.trim() === ''} >Submit</AddButton>
                 </div>
             )
