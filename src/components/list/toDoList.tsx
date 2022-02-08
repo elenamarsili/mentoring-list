@@ -23,33 +23,31 @@ export const ToDoList = ({ toDoList, setToDoList }: Props) => {
         setTitle(title)
     }
     const onEdit = () => {
-        setEditTitle(!editTitle)
+        if (title.trim() !== '') {
+            setEditTitle(!editTitle)
+        }
     }
 
     const onSubmit = () => {
-        const task: Task = {
-            id: toDoList.length+1,
-            task: newTask
+        if (newTask.trim() !== ''){
+            const task: Task = {
+                id: toDoList.length+1,
+                task: newTask
+            }
+            setToDoList(toDoList.concat(task));
+            setNewTask('')
         }
-        setToDoList(toDoList.concat(task));
-        setNewTask('')
-    }
-
-    const onTitleSubmit = () => {
-        const newTitle: string = title
-        setTitle(newTitle);
-        setEditTitle(false)
     }
 
     const onEnter= (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter" && newTask.trim() !== '') {
+        if (e.key === "Enter") {
             onSubmit()
         }
     }
 
     const onTitleEnter= (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter" && title.trim() !== '') {
-            onTitleSubmit()
+        if (e.key === "Enter") {
+            onEdit()
         }
     }
 
