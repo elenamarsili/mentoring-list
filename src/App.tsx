@@ -5,8 +5,14 @@ import { List, Lists } from "./types";
 import { AddListButton, ListItem, ListTitle } from "./components/list/toDo.styles";
 
 function App() {
-  /* const [myLists, setMyLists] = useState<Lists>([]); */
+ /*  const [myLists, setMyLists] = useState<Lists>([]); */
+  /* const [toDoList, setToDoList] = useState<List>({title: 'New List', tasks: []});  */
   const [toDoList, setToDoList] = useState<List>([]); 
+  
+  /* const onAddList = () => {
+    setMyLists(myLists.concat({title: 'New List', tasks: []}))
+} */
+
 
   return (
 /*     <div>
