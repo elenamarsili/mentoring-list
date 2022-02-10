@@ -7,6 +7,6 @@ export type List = {
 } 
 
 export type Task = {
-                id: number;
+                id: string;
                 task: string;
             }

@@ -1,7 +1,8 @@
 import { ToDo } from "./toDo"
 import React, { useState } from 'react';
+import { FaEdit } from "react-icons/fa";
 import { List, Lists, Task } from "../../types";
-import { ToDoInput, AddButton, AddItemsParagraph, ListTitle, Title, EditButton, TitleInput } from "./toDo.styles";
+import { ToDoInput, AddButton, AddItemsParagraph, ListTitle, Title, EditButton, TitleInput, DeleteListButton } from "./toDo.styles";
 
 type Props = { toDoList: List; setMyLists: React.Dispatch<React.SetStateAction<Lists>> }
 
@@ -59,7 +60,7 @@ export const ToDoList = ({ toDoList, setMyLists }: Props) => {
     const onSubmit = () => {
         if (newTask.trim() !== '') {
             const task: Task = {
-                id: toDoList.tasks.length + 1,
+                id: `${Date.now()}`,
                 task: newTask
             }
             setMyLists(myLists => (
@@ -77,6 +78,10 @@ export const ToDoList = ({ toDoList, setMyLists }: Props) => {
         }
     }
 
+    const onDeleteList = () => {
+        window.confirm('Are you sure you want to delete this list?') 
+        && setMyLists(myLists => myLists.filter((list)=> list.id !== toDoList.id && list))
+    }
 
 
 
@@ -90,7 +95,7 @@ export const ToDoList = ({ toDoList, setMyLists }: Props) => {
                     : (
                         <>
                             <ListTitle>{title}</ListTitle>
-                            <EditButton onClick={() => { onEdit() }}>Edit</EditButton>
+                            <EditButton onClick={() => { onEdit() }}><FaEdit /></EditButton>
                         </>
 
                     )}
@@ -111,6 +116,7 @@ export const ToDoList = ({ toDoList, setMyLists }: Props) => {
             </div>
             <ToDoInput value={newTask} onChange={(e) => { onFillTaskInput(e) }} type="text" placeholder="Enter new task..." onKeyPress={(e) => { onEnter(e) }} />
             <AddButton onClick={() => { onSubmit() }} disabled={newTask.trim() === ''} >Submit</AddButton>
+            <DeleteListButton onClick={() => { onDeleteList() }} >Delete List</DeleteListButton>
         </>
     )
 }

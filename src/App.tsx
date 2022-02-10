@@ -1,25 +1,27 @@
-import { ToDoList } from "./components/list/toDoList";
 import React, { useState } from 'react';
+import { ToDoList } from "./components/list/toDoList";
 
 import { Lists } from "./types";
-import { AddListButton, ListItem, ListContainer, Button, ListsTitle, } from "./components/list/toDo.styles";
+import { AddListButton, ListItem, ListContainer, Button, ListsTitle, ConsoleButton, } from "./components/list/toDo.styles";
 
 function App() {
   const [myLists, setMyLists] = useState<Lists>([]);
   
   const onAddList = () => {
     setMyLists(myLists.concat({id: `${Date.now()}`,title: 'New List', tasks: []}))
-}
- 
-console.log(myLists)
+  }
 
+  const onConsole = () => {
+    console.log(myLists)
+  }
+ 
   return (
     <div>
       <ListsTitle>My Lists</ListsTitle>
         <ListContainer>
           {myLists.map(list => {
             return (
-              <ListItem className="App">
+              <ListItem key={list.id} className="App">
                 <ToDoList toDoList={list} setMyLists={setMyLists} />
               </ListItem>
             )
@@ -27,6 +29,9 @@ console.log(myLists)
         </ListContainer>
       <Button>
         <AddListButton onClick={() => { onAddList() }}>+</AddListButton>
+      </Button>
+      <Button>
+        <ConsoleButton onClick={() => { onConsole() }}>console.log(myLists)</ConsoleButton>
       </Button>
       
     </div>
