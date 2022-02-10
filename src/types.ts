@@ -1,14 +1,12 @@
 export type Lists = Array<List>
 
-/* export type List = {
+export type List = {
+    id: string;
     title: string;
     tasks: Array<Task>;
-} */
+} 
 
 export type Task = {
                 id: number;
                 task: string;
             }
-
-
-export type List = Array<Task>
