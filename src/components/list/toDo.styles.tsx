@@ -30,7 +30,6 @@ export const ListContainer = styled.div`
 `
 
 export const ListItem = styled.div`
-    width: 25%;
     padding: 15px;
     margin-top: 20px; 
     border: 1px solid #0000006b;
