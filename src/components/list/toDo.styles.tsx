@@ -16,12 +16,29 @@ export const ToDoItem = styled.div`
     align-items: center;
 `
 
+export const ListContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+`
+
 export const ListItem = styled.div`
-    max-width: 30%;
+    width: 25%;
     padding: 15px;
     margin-top: 20px; 
     border: 1px solid #0000006b;
     border-radius: 8px;
+`
+
+export const Button = styled.div`
+   text-align: center;
+`
+export const ListsTitle = styled.h1`
+    margin: 0px;
+    font-size: 52px;
+    font-family: Arial, sans-serif;
+    text-align: center;
 `
 
 export const ListTitle = styled.h1`
@@ -44,11 +61,15 @@ export const AddButton = styled.button`
     width: 100%;
     padding: 5px;
     margin-top: 5px;
-    border: 1px solid #31AAB4;
+    border: 1px solid #3BB3BD;
     border-radius: 8px;
-    background-color: #31AAB4;
+    background-color: #3BB3BD;
     color: white;
     cursor:pointer;
+    &:hover {
+        background-color: #33aab4;
+        font-weight: bold;
+        }
 `
 
 export const DeleteButton = styled.button`
@@ -58,6 +79,9 @@ export const DeleteButton = styled.button`
     background-color: transparent;
     color: red;
     cursor:pointer;
+    &:hover {
+        font-weight: bold;
+        }
 `
 
 export const AddListButton = styled.button`
@@ -65,12 +89,16 @@ export const AddListButton = styled.button`
     font-size: 38px;
     padding: 5px 15px;
     margin-top: 20px;
-    border: 1px solid #31AAB4;
+    border: 1px solid #3BB3BD;
     border-radius: 8px;
-    background-color: #31AAB4;
+    background-color: #3BB3BD;
     color: white;
     cursor:pointer;
     cursor:pointer;
+    &:hover {
+        background-color: #33aab4;
+        font-weight: bold;
+        }
 `
 
 export const AddItemsParagraph = styled.p`
@@ -92,8 +120,12 @@ export const EditButton = styled.button`
     font-size: 12px;
     border-color: transparent;
     background-color: transparent;
-    color: #31AAB4;
+    color: #3BB3BD;
     cursor:pointer;
+    &:hover {
+        color: #33aab4;
+        font-weight: bold;
+        }
 `
 
 export const TitleInput = styled.input`
