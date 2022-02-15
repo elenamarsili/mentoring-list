@@ -80,7 +80,7 @@ export const ToDoList = ({ toDoList, setMyLists }: Props) => {
 
     const onDeleteList = () => {
         window.confirm('Are you sure you want to delete this list?') 
-        && setMyLists(myLists => myLists.filter((list)=> list.id !== toDoList.id && list))
+        && setMyLists(myLists => myLists.filter((list)=> list.id !== toDoList.id))
     }
 
 

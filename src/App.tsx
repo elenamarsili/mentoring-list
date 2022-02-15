@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
 import { ToDoList } from "./components/list/toDoList";
-
-import { Lists } from "./types";
 import { AddListButton, ListItem, ListContainer, Button, ListsTitle, ConsoleButton, } from "./components/list/toDo.styles";
+import { useMyListsContext, useSetMyListsContext } from './contexts/ListsContext';
 
 function App() {
-  const [myLists, setMyLists] = useState<Lists>([]);
+  const myLists = useMyListsContext()
+  const setMyLists = useSetMyListsContext()
   
   const onAddList = () => {
     setMyLists(myLists.concat({id: `${Date.now()}`,title: 'New List', tasks: []}))
