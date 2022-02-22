@@ -1,12 +1,14 @@
 import { ToDo } from "./toDo"
 import React, { useState } from 'react';
 import { FaEdit } from "react-icons/fa";
-import { List, Lists, Task } from "../../types";
+import { List, Task } from "../../types";
 import { ToDoInput, AddButton, AddItemsParagraph, ListTitle, Title, EditButton, TitleInput, DeleteListButton } from "./toDo.styles";
+import { useSetMyListsContext } from '../../contexts/ListsContext';
 
-type Props = { toDoList: List; setMyLists: React.Dispatch<React.SetStateAction<Lists>> }
+type Props = { toDoList: List;}
 
-export const ToDoList = ({ toDoList, setMyLists }: Props) => {
+export const ToDoList = ({ toDoList}: Props) => {
+    const setMyLists = useSetMyListsContext()
 
     const [newTask, setNewTask] = useState<string>('')
 
@@ -105,7 +107,7 @@ export const ToDoList = ({ toDoList, setMyLists }: Props) => {
                     <>
                         {toDoList.tasks.map(todo => {
                             return (
-                                <ToDo key={todo.id} todo={todo} toDoList={toDoList} setMyLists={setMyLists} />
+                                <ToDo key={todo.id} todo={todo} toDoList={toDoList}/>
                             )
                         })}
                     </>

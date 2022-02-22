@@ -2,11 +2,13 @@ import { List, Lists, Task } from "../../types"
 import { ToDoItem, DeleteButton, EditButton, ToDoInput, TaskButtons } from "./toDo.styles";
 import React, { useState } from 'react';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { useSetMyListsContext } from '../../contexts/ListsContext';
 
-type Props = {todo: Task; toDoList: List; setMyLists: React.Dispatch<React.SetStateAction<Lists>>}
+type Props = {todo: Task; toDoList: List}
 
-export const ToDo = ({todo, toDoList, setMyLists}: Props) => {
-    
+export const ToDo = ({todo, toDoList}: Props) => {
+    const setMyLists = useSetMyListsContext()
+
     const [editTask, setEdiTask] = useState<boolean>(false)
     const [task, setTask] = useState<string>(todo.task)
 

@@ -5,7 +5,6 @@ import { useMyListsContext, useSetMyListsContext } from './contexts/ListsContext
 function App() {
   const myLists = useMyListsContext()
   const setMyLists = useSetMyListsContext()
-  
   const onAddList = () => {
     setMyLists(myLists.concat({id: `${Date.now()}`,title: 'New List', tasks: []}))
   }
@@ -21,7 +20,7 @@ function App() {
           {myLists.map(list => {
             return (
               <ListItem key={list.id} className="App">
-                <ToDoList toDoList={list} setMyLists={setMyLists} />
+                <ToDoList toDoList={list}/>
               </ListItem>
             )
           })}
