@@ -1,13 +1,13 @@
-import { List, Lists, Task } from "../../types"
+import { List, Task } from "../../types"
 import { ToDoItem, DeleteButton, EditButton, ToDoInput, TaskButtons } from "./toDo.styles";
 import React, { useState } from 'react';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { useSetMyListsContext } from '../../contexts/ListsContext';
+import { useDispatchListsContext } from '../../contexts/ListsContext';
 
 type Props = {todo: Task; toDoList: List}
 
 export const ToDo = ({todo, toDoList}: Props) => {
-    const setMyLists = useSetMyListsContext()
+    const dispatch = useDispatchListsContext()
 
     const [editTask, setEdiTask] = useState<boolean>(false)
     const [task, setTask] = useState<string>(todo.task)
@@ -30,45 +30,13 @@ export const ToDo = ({todo, toDoList}: Props) => {
 
     const onTaskSubmit = () => {
         onEdit()
-        setMyLists(myLists => (
-            myLists.map((list)=>{
-                if (list.id === toDoList.id) {
-                    return {
-                        ...toDoList,
-                        tasks: toDoList.tasks.map((t) => {
-                            if (t.id === todo.id) {
-                               return {
-                                   ...todo,
-                                   id: `${Date.now()}`,
-                                   task
-                               } 
-                            } else {
-                                return t
-                            }
-                        })
-                    }
-                } 
-                return list
-            })
-        ))
+        dispatch({type: 'edit-task', id: toDoList.id, editedTask: task, taskId: todo.id})
     }
 
     const onDelete = () => {
         const toRemove = todo
         window.confirm('Are you sure you want to delete this item?') 
-        && setMyLists(myLists => (
-            myLists.map((list)=>{
-                if (list.id === toDoList.id) {
-                    return {
-                        ...toDoList,
-                        tasks: toDoList.tasks.filter((item) => {
-                            return item !== toRemove
-                        })
-                    }
-                } 
-                return list
-            })
-        ))
+        && dispatch({type: 'delete-task-from-list', id: toDoList.id, taskToRemove: toRemove })
     }
 
         return (

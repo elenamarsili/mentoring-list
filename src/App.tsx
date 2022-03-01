@@ -1,18 +1,14 @@
 import { ToDoList } from "./components/list/toDoList";
-import { AddListButton, ListItem, ListContainer, Button, ListsTitle, ConsoleButton, } from "./components/list/toDo.styles";
-import { useMyListsContext, useSetMyListsContext } from './contexts/ListsContext';
+import { AddListButton, ListItem, ListContainer, Button, ListsTitle } from "./components/list/toDo.styles";
+import { useMyListsContext, useDispatchListsContext } from './contexts/ListsContext';
 
 function App() {
   const myLists = useMyListsContext()
-  const setMyLists = useSetMyListsContext()
+  const dispatch = useDispatchListsContext()
+  
   const onAddList = () => {
-    setMyLists(myLists.concat({id: `${Date.now()}`,title: 'New List', tasks: []}))
+    dispatch({type: 'new-list'})
   }
-
-  const onConsole = () => {
-    console.log(myLists)
-  }
- 
   return (
     <div>
       <ListsTitle>My Lists</ListsTitle>
@@ -28,9 +24,9 @@ function App() {
       <Button>
         <AddListButton onClick={() => { onAddList() }}>+</AddListButton>
       </Button>
-      <Button>
-        <ConsoleButton onClick={() => { onConsole() }}>console.log(myLists)</ConsoleButton>
-      </Button>
+   
+      <div>{JSON.stringify(myLists)}</div>
+  
       
     </div>
   );

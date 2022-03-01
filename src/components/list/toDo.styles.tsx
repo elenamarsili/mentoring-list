@@ -121,22 +121,6 @@ export const AddListButton = styled.button`
         font-weight: bold;
         }
 `
-export const ConsoleButton = styled.button`
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    padding: 5px 15px;
-    margin-top: 20px;
-    border: 1px solid #3BB3BD;
-    border-radius: 8px;
-    background-color: #3BB3BD;
-    color: white;
-    cursor:pointer;
-    cursor:pointer;
-    &:hover {
-        background-color: #33aab4;
-        font-weight: bold;
-        }
-`
 
 export const AddItemsParagraph = styled.p`
     font-family: Arial, sans-serif;

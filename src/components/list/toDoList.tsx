@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { FaEdit } from "react-icons/fa";
 import { List, Task } from "../../types";
 import { ToDoInput, AddButton, AddItemsParagraph, ListTitle, Title, EditButton, TitleInput, DeleteListButton } from "./toDo.styles";
-import { useSetMyListsContext } from '../../contexts/ListsContext';
+import { useDispatchListsContext } from '../../contexts/ListsContext';
 
 type Props = { toDoList: List;}
 
 export const ToDoList = ({ toDoList}: Props) => {
-    const setMyLists = useSetMyListsContext()
+    const dispatch = useDispatchListsContext()
 
     const [newTask, setNewTask] = useState<string>('')
 
@@ -34,17 +34,7 @@ export const ToDoList = ({ toDoList}: Props) => {
 
     const onTitleSubmit = () => {
         onEdit()
-            setMyLists(myLists => (
-                myLists.map((list)=>{
-                    if (list.id === toDoList.id) {
-                        return {
-                            ...toDoList,
-                            title
-                        }
-                    } 
-                    return list
-                })
-            ))
+        dispatch({type: 'list-title-update', title, id: toDoList.id})
     }
 
     const onEdit = () => {
@@ -65,24 +55,14 @@ export const ToDoList = ({ toDoList}: Props) => {
                 id: `${Date.now()}`,
                 task: newTask
             }
-            setMyLists(myLists => (
-                myLists.map((list)=>{
-                    if (list.id === toDoList.id) {
-                        return {
-                            ...toDoList,
-                            tasks : toDoList.tasks.concat(task)
-                        }
-                    } 
-                    return list
-                })
-            ))
+            dispatch({type: 'add-task-to-list', task, id: toDoList.id})
             setNewTask('')
         }
     }
 
     const onDeleteList = () => {
         window.confirm('Are you sure you want to delete this list?') 
-        && setMyLists(myLists => myLists.filter((list)=> list.id !== toDoList.id))
+        && dispatch({type: 'delete-list', id: toDoList.id})
     }
 
 

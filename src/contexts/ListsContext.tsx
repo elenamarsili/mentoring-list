@@ -1,15 +1,16 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useReducer, useState } from "react";
 import { Lists } from "../types";
+import { reducer, Action } from "./ListsReducer";
 
 type Props = { children: ReactNode}
 
-const Context = createContext<{myLists: Lists, setMyLists: React.Dispatch<React.SetStateAction<Lists>>}>({myLists: [], setMyLists: ()=> {}})
+const Context = createContext<{myLists: Lists, dispatch: React.Dispatch<Action>}>({myLists: [], dispatch: ()=> {}})
 
 export const MyListsProvider = (props: Props) => {
-    const [myLists, setMyLists] = useState<Lists>([]);
+    const [myLists, dispatch] = useReducer(reducer, [])
 
     return (
-        <Context.Provider value={{myLists, setMyLists}} >
+        <Context.Provider value={{myLists, dispatch}} >
             {props.children}
         </Context.Provider>
     )
@@ -20,7 +21,7 @@ export const useMyListsContext = () =>{
     return context.myLists
 }
 
-export const useSetMyListsContext = () =>{
+export const useDispatchListsContext = () =>{
     const context = useContext(Context)
-    return context.setMyLists
+    return context.dispatch
 }
