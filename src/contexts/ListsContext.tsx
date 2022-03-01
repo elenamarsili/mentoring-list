@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useReducer, useState } from "react";
+import { createContext, ReactNode, useContext, useReducer } from "react";
 import { Lists } from "../types";
 import { reducer, Action } from "./ListsReducer";
 
@@ -8,7 +8,7 @@ const Context = createContext<{myLists: Lists, dispatch: React.Dispatch<Action>}
 
 export const MyListsProvider = (props: Props) => {
     const [myLists, dispatch] = useReducer(reducer, [])
-
+    
     return (
         <Context.Provider value={{myLists, dispatch}} >
             {props.children}

@@ -13,7 +13,7 @@ export type Action = {
 }
 
 
-export const reducer = (currentState: State, action: Action): State=> {
+export const reducer = (currentState: State, action: Action): State=> {    
     switch(action.type) {
         case 'new-list': {
             return currentState.concat({id: `${Date.now()}`,title: 'New List', tasks: []})
