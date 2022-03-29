@@ -23,11 +23,7 @@ function Lists() {
         </ListContainer>
       <Button>
         <AddListButton onClick={() => { onAddList() }}>+</AddListButton>
-      </Button>
-   
-      <div>{JSON.stringify(myLists)}</div>
-  
-      
+      </Button>    
     </div>
   );
 }
