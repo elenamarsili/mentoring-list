@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useSetUserContext } from "../../contexts/AuthContext";
+import { LoginBox, LoginButton, LoginInput, LoginTitle } from "./auth.styles";
+
 
 
 function Login() {
     const setUser = useSetUserContext() 
         
     const [email, setEmail] = useState<string>("")
+    const [name, setName] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
     const onSubmit = () => {
-        setUser({email , password})
+        setUser({email , name, password})
+        document.title = `Welcome ${email}`
     };
 
 
@@ -18,19 +22,26 @@ function Login() {
         setEmail(email)
     }
 
+    const onChangeName = (e:React.ChangeEvent<HTMLInputElement>)=>{
+      const name = e.target.value
+      setName(name)
+    }
+
     const onChangePassword = (e:React.ChangeEvent<HTMLInputElement>)=>{
         const password = e.target.value
         setPassword(password)
     }
 
     return (
-      <div> 
-        <input type="email" value={email} onChange={(e) => onChangeEmail(e)}/>  
-
-        <input type="password" value={password} onChange={(e) => onChangePassword(e)}/>  
-
-        <button onClick={onSubmit}>Login</button>
-      </div>
+      <LoginBox> 
+          <LoginTitle>My Lists</LoginTitle>
+          <LoginInput type="email" name="email" value={email} placeholder="Email" onChange={(e) => onChangeEmail(e)}/>
+          <LoginInput type="name" name="name" value={name} placeholder="Username" onChange={(e) => onChangeName(e)}/> 
+          <LoginInput type="password" name="password" value={password} placeholder="Password" onChange={(e) => onChangePassword(e)}/>  
+        <LoginButton onClick={onSubmit}>
+          Login
+        </LoginButton>
+      </LoginBox>
     );
   }
   

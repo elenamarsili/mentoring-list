@@ -4,9 +4,9 @@ import { useUserContext } from './contexts/AuthContext';
 import { MyListsProvider } from './contexts/ListsContext';
 
 function App() {
-  const { email, password } = useUserContext()
+  const { email, password, name } = useUserContext()
 
-  if (email==="" || password===""){
+  if (email==="" || password==="" || name==="" ){
     return(
       <Login />
     )

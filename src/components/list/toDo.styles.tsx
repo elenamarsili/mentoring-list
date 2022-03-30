@@ -150,6 +150,8 @@ export const EditButton = styled.button`
         }
 `
 
+
+
 export const TitleInput = styled.input`
     font-family: Arial, sans-serif;
     font-size: 14px;
