@@ -18,18 +18,18 @@ function Login() {
 
 
     const onChangeEmail = (e:React.ChangeEvent<HTMLInputElement>)=>{
-        const email = e.target.value
-        setEmail(email)
+        const newEmail = e.target.value
+        setEmail(newEmail)
     }
 
     const onChangeName = (e:React.ChangeEvent<HTMLInputElement>)=>{
-      const name = e.target.value
-      setName(name)
+      const newName = e.target.value
+      setName(newName)
     }
 
     const onChangePassword = (e:React.ChangeEvent<HTMLInputElement>)=>{
-        const password = e.target.value
-        setPassword(password)
+        const newPassword = e.target.value
+        setPassword(newPassword)
     }
 
     return (

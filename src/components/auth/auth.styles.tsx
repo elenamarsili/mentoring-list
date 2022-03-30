@@ -49,7 +49,7 @@ export const LogoutButton = styled.button`
 export const LoginInput = styled.input`
     padding:10px;
     margin: 5px 0px;
-    width: 90%;
+    width: 95%;
     border:0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 `
