@@ -3,10 +3,10 @@ import { User } from "../types";
 
 type Props = { children: ReactNode}
 
-const AuthContext = createContext<{user: User, setUser: React.Dispatch<React.SetStateAction<User>>}>({user: { email: '', name: '', password: ''}, setUser: ()=> {}})
+const AuthContext = createContext<{user: User, setUser: React.Dispatch<React.SetStateAction<User>>}>({user: { email: '', password: ''}, setUser: ()=> {}})
 
 export const AuthContextProvider = (props: Props) => {
-    const [user, setUser] = useState<User>({ email: '', name:'', password: ''})
+    const [user, setUser] = useState<User>({ email: '', password: ''})
   
     return (
         <AuthContext.Provider value={{user, setUser}}>

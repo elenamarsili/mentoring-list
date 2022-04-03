@@ -5,17 +5,17 @@ import { MyListsProvider } from './contexts/ListsContext';
 import { useEffect } from 'react';
 
 function App() {
-  const { email, password, name } = useUserContext()
+  const { email, password} = useUserContext()
 
   useEffect(() => {
-    if (email==="" || password==="" || name==="" ){
+    if (email==="" || password===""){
     document.title = `My Lists`
     } else {
       document.title = `Welcome ${email}`
     }
   });
 
-  if (email==="" || password==="" || name==="" ){
+  if (email==="" || password===""){
     return(
       <Login />
     )

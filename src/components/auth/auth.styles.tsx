@@ -60,3 +60,24 @@ export const LoginTitle = styled.h1`
     color: #3BB3BD;
     font-weight: 700;
 `
+
+export const PassWrapper = styled.div`
+    position: relative;
+    margin-bottom: 14px;
+`
+
+export const EmailWrapper = styled.div`
+    position: relative;
+    display: flex;
+    margin-bottom: 14px;
+`
+
+export const EyeIcon = styled.i`
+    position: absolute;
+    top: 33%;
+    right: 7%;
+    &:hover {
+        color: #3bb3bd;
+        cursor: pointer;
+        }
+`

@@ -15,7 +15,7 @@ function Lists() {
 
   return (
     <div>
-      <ListsTitle>{user.name}'s Lists</ListsTitle>
+      <ListsTitle>{user.email}'s Lists</ListsTitle>
         <Logout />
         <ListContainer>
           {myLists.map(list => {
