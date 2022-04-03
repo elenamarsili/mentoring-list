@@ -13,9 +13,7 @@ function Login() {
 
     const onSubmit = () => {
         setUser({email , name, password})
-        document.title = `Welcome ${email}`
     };
-
 
     const onChangeEmail = (e:React.ChangeEvent<HTMLInputElement>)=>{
         const newEmail = e.target.value

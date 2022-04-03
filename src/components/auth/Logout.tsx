@@ -6,7 +6,6 @@ function Logout() {
 
     const logout = () => {
         setUser({email: "", name: "", password: ""});
-        document.title = `My Lists`
       }
 
     return (
