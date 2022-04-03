@@ -30,12 +30,20 @@ function Login() {
         setPassword(newPassword)
     }
 
+    const onLoginEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if ((email!=="" && password!=="" && name!=="" )){
+        if (e.key === "Enter") {
+            onSubmit()
+        } 
+      }
+  }
+
     return (
       <LoginBox> 
           <LoginTitle>My Lists</LoginTitle>
-          <LoginInput type="email" name="email" value={email} placeholder="Email" onChange={(e) => onChangeEmail(e)}/>
-          <LoginInput type="name" name="name" value={name} placeholder="Username" onChange={(e) => onChangeName(e)}/> 
-          <LoginInput type="password" name="password" value={password} placeholder="Password" onChange={(e) => onChangePassword(e)}/>  
+          <LoginInput type="email" name="email" value={email} placeholder="Email" onChange={(e) => onChangeEmail(e)}  onKeyPress={(e) => { onLoginEnter(e) }}/>
+          <LoginInput type="name" name="name" value={name} placeholder="Username" onChange={(e) => onChangeName(e)}  onKeyPress={(e) => { onLoginEnter(e) }}/> 
+          <LoginInput type="password" name="password" value={password} placeholder="Password" onChange={(e) => onChangePassword(e)}  onKeyPress={(e) => { onLoginEnter(e) }}/>  
         <LoginButton onClick={onSubmit}>
           Login
         </LoginButton>

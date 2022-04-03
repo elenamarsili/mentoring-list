@@ -47,7 +47,7 @@ export const LogoutButton = styled.button`
 `
 
 export const LoginInput = styled.input`
-    padding:10px;
+    padding:5px;
     margin: 5px 0px;
     width: 95%;
     border:0;
