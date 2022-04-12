@@ -66,11 +66,6 @@ export const PassWrapper = styled.div`
     margin-bottom: 14px;
 `
 
-export const EmailWrapper = styled.div`
-    position: relative;
-    display: flex;
-    margin-bottom: 14px;
-`
 
 export const EyeIcon = styled.i`
     position: absolute;

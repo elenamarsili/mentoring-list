@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSetUserContext } from "../../contexts/AuthContext";
-import { EmailWrapper, EyeIcon, LoginBox, LoginButton, LoginInput, LoginTitle, PassWrapper } from "./auth.styles";
+import { EyeIcon, LoginBox, LoginButton, LoginInput, LoginTitle, PassWrapper } from "./auth.styles";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
@@ -41,9 +41,7 @@ function Login() {
       <LoginBox> 
           <form onSubmit={onSubmit}> 
             <LoginTitle>My Lists</LoginTitle>
-            <EmailWrapper>
-              </EmailWrapper>
-            <LoginInput type="email" name="email" value={email} placeholder="Email" onChange={(e) => onChangeEmail(e)}  onKeyPress={(e) => { onLoginEnter(e) }}/>
+              <LoginInput type="email" name="email" value={email} placeholder="Email" onChange={(e) => onChangeEmail(e)}  onKeyPress={(e) => { onLoginEnter(e) }}/>
             <PassWrapper>
               <LoginInput type={passwordShown ? "text" : "password"} name="password" value={password} placeholder="Password" onChange={(e) => onChangePassword(e)}  onKeyPress={(e) => { onLoginEnter(e) }}/>  
               <EyeIcon>{passwordShown ? <FaEyeSlash onClick={togglePasswordVisiblity}/> : <FaEye onClick={togglePasswordVisiblity}/>}</EyeIcon>
