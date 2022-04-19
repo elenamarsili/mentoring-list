@@ -7,7 +7,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    list: [Task]
+    list: [Task],
+    task(id: String): String
   }
 `;
 
@@ -28,7 +29,12 @@ const list = [
         
 const resolvers = {
     Query: {
-      list: () => list.map(task => task)
+      list: () => list.map(task => task),
+      task: (_, args) =>  {
+        const {id} = args;
+        const chosenTask = list.find(task => task.id === id)
+        return chosenTask ? chosenTask.task : null
+      }
     }
   };
 
